@@ -1,10 +1,11 @@
 #take photos from a subreddit of reddit 🤪
 require 'rest-client'
 require 'json'
-require 'pry'
-require 'open-uri'
+
+#this two gems are required to download images from web
 require 'rubygems'
 require 'mechanize'
+
 
 def welcome
     puts "- - - Hi There! - - -"
@@ -41,9 +42,8 @@ def get_links(hash2)
 end
 
 def download_photos_to_a_certain_folder(linksarray, dir)
-    # the folder to download photos '/Users/emskaplann/test_apps'
-    #this is a example for image name that we are downloading =>> VxN85T34V3h-Ei6WKKn4ybEpqmagEm-DEBZSxPwXEeE.jpg
-
+#this is a example for image name that we are downloading =>> VxN85T336V3h-Ei6WKKn4ybEpqmagEm-DEBZSxPwXEeE.jpg
+#this mechanize code is also required for downloading images from web
     agent=Mechanize.new
     linksarray.each{|link|
         agent.get(link).save"#{dir}#{File.basename(link)}"
